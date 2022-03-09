@@ -1,27 +1,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int Search(int arr[], int key, int n)
+int jump_search(int arr[],int n, int key)
 {
-    int step = sqrt(n);
-    int prev = 0;
-    while (arr[min(step, n)-1] < key)
-    {
-        prev = step;
-        step += sqrt(n);
-        if (prev >= n)
-            return -1;
-    }
-    while (arr[prev] < key)
-    {
-        prev++;
-        if (prev == min(step, n))
-            return -1;
-    }
-    if (arr[prev] == key)
-        return prev;
-
-    return -1;
+  int m=sqrt(n);
+  int i=0;
+  while(arr[m]<=key && m<n)
+  {
+    i=m;
+    m+=sqrt(n);
+    if(m>n-1)
+      m=n;
+  }
+  for(int k=i;k<m;k++)
+  {
+    if(arr[k]==key)
+      return k;
+  }
+  return -1;
 }
 
 int main()
@@ -32,17 +28,15 @@ int main()
   {
     int n,key;
     cin>>n;
-    int arr[10000];
+    int arr[1000];
     for(int i=0;i<n;i++)
       cin>>arr[i];
-
     cin>>key;
-    int res=Search(arr,key,n);
+    int res=jump_search(arr,n,key);
     if(res==-1)
-      cout<<"Not Present "<<n<<endl;
+      cout<<"Not Found"<<endl;
     else
-      cout<<"Present "<<res+1<<endl;
-
+      cout<<"Found at position: "<<res+1<<endl;
   }
   return 0;
 }

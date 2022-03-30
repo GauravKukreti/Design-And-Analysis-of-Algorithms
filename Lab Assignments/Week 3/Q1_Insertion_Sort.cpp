@@ -3,8 +3,7 @@ using namespace std;
 
 void printArray(int arr[], int n)
 {
-    int i;
-    for (i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
 }
@@ -26,7 +25,6 @@ int main()
         {
             int key = arr[i];
             int j = i - 1;
-            comp++;
             while (j >= 0 && arr[j] > key)
             {
                 arr[j + 1] = arr[j];
@@ -35,6 +33,7 @@ int main()
                 shift++;
             }
             arr[j + 1] = key;
+            shift++;
         }
         
         printArray(arr, n);
@@ -42,7 +41,6 @@ int main()
     }
     return 0;
 }
-
 
 /*
 

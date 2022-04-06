@@ -58,19 +58,7 @@ void printArray(int A[], int size)
 {
 	for (int i = 0; i < size; i++)
 		cout << A[i] << " ";
-}
-
-void check(int arr[],int n)
-{
-    for(int i=0;i<n-1;i++)
-    {
-        if(arr[i]==arr[i+1])
-        {
-            cout<<"YES\n";
-            return;
-        }
-    }
-    cout<<"NO\n";
+	cout<<endl;
 }
 
 int main()
@@ -86,10 +74,11 @@ int main()
           cin>>arr[i];
           
         mergeSort(arr, 0, n-1);
-        check(arr,n);
+        printArray(arr,n);
     }
     return 0;
 }
+
 
 /*
 
